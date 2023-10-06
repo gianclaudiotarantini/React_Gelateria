@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="App">
       <section className="section-center">
-        <h3> Nice Cream</h3>
+        <h3> Nice Creammm</h3>
         <Menu />
       </section>
     </div>
