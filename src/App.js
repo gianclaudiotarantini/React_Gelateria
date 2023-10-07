@@ -1,13 +1,16 @@
+import { Route, Routes } from "react-router-dom";
 import { Menu } from "./components";
+
+
 
 function App() {
   return (
-    <div className="App">
-      <section className="section-center">
-        <h3> Nice Creammm</h3>
-        <Menu />
-      </section>
-    </div>
+    <>
+    
+      <Routes>
+         <Route path="/" element={<Menu />} />
+      </Routes>
+      </>
   );
 }
 

@@ -293,3 +293,11 @@ p {
 .active {
   border-bottom: 2px solid var(--secondary-blue);
 }
+
+.navbar-expand {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
