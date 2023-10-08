@@ -301,3 +301,8 @@ p {
   left: 0;
   z-index: 1000;
 }
+
+.custom-navbar {
+  width: 100%!important /* Estendi la larghezza al 100% dello schermo */
+  
+}

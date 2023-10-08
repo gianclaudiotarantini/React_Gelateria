@@ -60,8 +60,10 @@ const Home = () => {
   };
 
   return (
+    <>
+    <Navigation onSearch={searchProducts} /> {/* Passa la funzione di ricerca al componente Navigation */}
     <div className="container">
-<Navigation onSearch={searchProducts} /> {/* Passa la funzione di ricerca al componente Navigation */}
+
       <h4 style={{ textAlign: "center", textTransform: "uppercase" }}> {/* Proprietà css */}
         Le Nostre Scelte
       </h4>
@@ -69,7 +71,7 @@ const Home = () => {
         //Se non sto caricando e non ci sono Errori
         !isLoading && !isError ? (
           <>
-            <div className="lista-categorie">
+            <div className="lista-categorie mt-3">
               {categorie.map((categoria, index) => ( // Itera le categorie
                 <button         // Allora creami un bottone con active
                   className={`btn btn-selector ${
@@ -83,8 +85,8 @@ const Home = () => {
                 </button>
               ))}
             </div>
-            <hr />
-            <div className="vetrina">
+            
+            <div className="vetrina justify-content-center">
               {filterProducts.map((el) => (         // Settaggio e iterazione del filterproduct che chiama el
                 <Gelato key={el.id} {...el} />      // Chiama il componente gelato con key id e spred op. di el
               ))}
@@ -116,6 +118,7 @@ const Home = () => {
         )
       }
     </div>
+    </>
   );
 };
 
