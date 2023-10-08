@@ -12,7 +12,6 @@ const Home = () => {
   const [filterProducts, setFilterProducts] = useState([]);
   const [selected, setSelected] = useState(0);
   const [categorie, setCategorie] = useState([]);
-  const [searchQuery, setSearchQuery] = useState(""); // Nuovo stato per la query di ricerca
 
   const filtraProdotti = (categoria, index) => {
     setSelected(index);
@@ -61,36 +60,61 @@ const Home = () => {
   };
 
   return (
-    <div className="App">
-      <section className="section-center">
-        <div className="container">
-          
-          <Navigation onSearch={searchProducts} /> {/* Passa la funzione di ricerca al componente Navigation */}
-          <h4 style={{ textAlign: "center", textTransform: "uppercase" }}>
-            Le Nostre Scelte
+    <div className="container">
+<Navigation onSearch={searchProducts} /> {/* Passa la funzione di ricerca al componente Navigation */}
+      <h4 style={{ textAlign: "center", textTransform: "uppercase" }}> {/* Proprietà css */}
+        Le Nostre Scelte
+      </h4>
+      {
+        //Se non sto caricando e non ci sono Errori
+        !isLoading && !isError ? (
+          <>
+            <div className="lista-categorie">
+              {categorie.map((categoria, index) => ( // Itera le categorie
+                <button         // Allora creami un bottone con active
+                  className={`btn btn-selector ${
+                    selected === index && "active" //Per fare in modo che la pagina mostri tutti i prodotti 
+                  }`}
+                  key={index}         // key di index
+                  data-categoria={categoria} // Nell'array è data-categoria
+                  onClick={() => filtraProdotti(categoria, index)}  // Al click filtra i prodotti per categoria
+                >
+                  {categoria}   {/* Mostra le categorie */}
+                </button>
+              ))}
+            </div>
+            <hr />
+            <div className="vetrina">
+              {filterProducts.map((el) => (         // Settaggio e iterazione del filterproduct che chiama el
+                <Gelato key={el.id} {...el} />      // Chiama il componente gelato con key id e spred op. di el
+              ))}
+            </div>
+          </>
+        ) : //Se non sto caricando ma sono presenti errori
+        !isLoading && isError ? (
+          <h4
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            Errore...
           </h4>
-          <div className="lista-categorie">
-            {categorie.map((categoria, index) => (
-              <button
-                className={`btn btn-selector ${
-                  selected === index && "active"
-                }`}
-                key={index}
-                data-categoria={categoria}
-                onClick={() => filtraProdotti(categoria, index)}
-              >
-                {categoria}
-              </button>
-            ))}
-          </div>
-          <hr />
-          <div className="vetrina">
-            {filterProducts.map((el) => (
-              <Gelato key={el.id} {...el} />
-            ))}
-          </div>
-        </div>
-      </section>
+        ) : (           // Altrimenti loading
+          <h4
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            Loading...
+          </h4>
+        )
+      }
     </div>
   );
 };
