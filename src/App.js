@@ -1,5 +1,6 @@
-import { Route, Routes } from "react-router-dom";
+import {  Route, Routes } from "react-router-dom";
 import { Menu } from "./components";
+import ProductDetail from "./components/ProductDetail";
 
 
 
@@ -10,6 +11,8 @@ function App() {
     
       <Routes>
          <Route path="/" element={<Menu />} />
+         <Route path="/product/:id" Component={ProductDetail} />
+
       </Routes>
       </>
   );

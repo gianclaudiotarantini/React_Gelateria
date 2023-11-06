@@ -6,10 +6,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
-function Navigation({ onSearch }) {
-  const [searchQuery, setSearchQuery] = React.useState('');
+function Navigation({ onSearch }) { // Inserimento del prop che serve a comunicare il cambiamento della query di ricerca
+  const [searchQuery, setSearchQuery] = React.useState(''); // Stato per per memorizzare la query di ricerca inserita dall'utente.
 
-  const handleSearchChange = (event) => {
+  const handleSearchChange = (event) => { // Funzione che viene chiamata ogni volta che l'utente modifica l'input di ricerca. Questa funzione aggiorna lo stato searchQuery con il testo inserito dall'utente.
     const query = event.target.value;
     setSearchQuery(query);
     onSearch(query);
