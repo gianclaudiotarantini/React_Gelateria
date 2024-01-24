@@ -1,11 +1,22 @@
+// Gelato.js
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Gelato = ({ nome, decrizione, img, prezzo, categoria }) => {
+const Gelato = ({ id, nome, img, prezzo, categoria, addToCart }) => {
+  const handleImageClick = () => {
+    console.log(`Hai cliccato sull'immagine di ${nome} (ID: ${id})`);
+  };
+
+ 
+
   return (
     <article className="gelato">
-      <div className="img-container">
-        <img src={img} alt={nome} className="img" />
-      </div>
+      <Link to={`/product/${id}`}>
+        <div className="img-container" onClick={handleImageClick}>
+          <img src={img} alt={nome} className="img" />
+        </div>
+      </Link>
+
       <div className="prd-info">
         <header className="prd-header">
           <div>
@@ -16,8 +27,9 @@ const Gelato = ({ nome, decrizione, img, prezzo, categoria }) => {
             <h6>{(prezzo / 100).toFixed(2)}€</h6>
           </span>
         </header>
+        <button  className="bn60 btn">Aggiungi</button>
         <hr />
-        <p>{decrizione}</p>
+        
       </div>
     </article>
   );

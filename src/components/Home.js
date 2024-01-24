@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Gelato from "./Gelato";
 import axios from "axios";
 import Navigation from "./Navigation"; // Assicurati di importare il componente Navigation
-import { Link } from "react-router-dom";
+
 
 const url = "https://react--course-api.herokuapp.com/api/v1/data/gelateria";
 
@@ -116,19 +116,13 @@ const Home = () => {
               </div>
 
               <div className="vetrina justify-content-center">
-                {filterProducts.map(
-                  (
-                    el // Settaggio e iterazione del filterproduct che chiama el
-                  ) => (
-                    <Link
-                      to={`/product/${el.id}`} // Specifica l'URL con l'ID del prodotto
-                      key={el.id}
-                    >
-                      <Gelato {...el} />{" "}   {/*Chiama il componente gelato con key id e spred op. di el*/}                
-                    </Link>
-                  )
-                )}
-              </div>
+      {filterProducts.map((el) => (
+        <div key={el.id}>
+          {/* Rimuovi il Link e avvolgi solo il componente Gelato */}
+          <Gelato {...el} />
+        </div>
+      ))}
+    </div>
             </>
           ) : //Se non sto caricando ma sono presenti errori
           !isLoading && isError ? (

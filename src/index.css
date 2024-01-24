@@ -306,3 +306,42 @@ p {
   width: 100%!important /* Estendi la larghezza al 100% dello schermo */
   
 }
+.bn60 {
+  background-color: #190c8d;
+  color: #ffffff;
+  font-size:small;
+  font-weight: 600;
+  position: relative;
+  outline: none;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 30px;
+  width: 100px;
+}
+
+.gelato-thumbnail {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 10px;
+}
+
+.gelato-thumbnail .img-container {
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.gelato-thumbnail img {
+  width: 100%;
+  height: auto;
+}
+
+.gelato-thumbnail .prd-info {
+  margin-top: 10px;
+  text-align: center;
+}
