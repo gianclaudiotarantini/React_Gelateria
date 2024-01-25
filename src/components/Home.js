@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Gelato from "./Gelato";
+import Carrello from './Carrello';
 import axios from "axios";
 import Navigation from "./Navigation"; // Assicurati di importare il componente Navigation
 
@@ -81,6 +82,20 @@ const Home = () => {
     setFilterProducts(filteredProducts);
   };
 
+  const [carrello, setCarrello] = useState([]);
+
+  const handleAggiungiAlCarrello = (gelato) => {
+    // Verifica se l'elemento è già presente nel carrello
+    if (!carrello.some((item) => item.id === gelato.id)) {
+      console.log(`Aggiungi al carrello: ${gelato.nome}`);
+      setCarrello((prevCarrello) => [...prevCarrello, gelato]);
+    } else {
+      console.log(`${gelato.nome} è già presente nel carrello.`);
+    }
+  };
+
+  console.log("Carrello attuale:", carrello);
+
   return (
     <>
       <Navigation onSearch={searchProducts} />{" "}
@@ -118,10 +133,11 @@ const Home = () => {
               <div className="vetrina justify-content-center">
       {filterProducts.map((el) => (
         <div key={el.id}>
-          {/* Rimuovi il Link e avvolgi solo il componente Gelato */}
-          <Gelato {...el} />
+            <Gelato {...el} addToCart={handleAggiungiAlCarrello} />
+          
         </div>
       ))}
+      <Carrello carrello={carrello} />
     </div>
             </>
           ) : //Se non sto caricando ma sono presenti errori

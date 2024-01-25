@@ -7,7 +7,10 @@ const Gelato = ({ id, nome, img, prezzo, categoria, addToCart }) => {
     console.log(`Hai cliccato sull'immagine di ${nome} (ID: ${id})`);
   };
 
- 
+  const handleAggiungiAlCarrello = () => {
+    console.log(`Aggiungi al carrello: ${nome}`);
+    addToCart({ id, nome, img, prezzo, categoria, addToCart });
+  };
 
   return (
     <article className="gelato">
@@ -27,7 +30,7 @@ const Gelato = ({ id, nome, img, prezzo, categoria, addToCart }) => {
             <h6>{(prezzo / 100).toFixed(2)}€</h6>
           </span>
         </header>
-        <button  className="bn60 btn">Aggiungi</button>
+        <button onClick={handleAggiungiAlCarrello} className="bn60 btn">Aggiungi</button>
         <hr />
         
       </div>
