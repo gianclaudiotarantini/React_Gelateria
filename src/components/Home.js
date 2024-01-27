@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Gelato from "./Gelato";
-import Carrello from './Carrello';
 import axios from "axios";
-import Navigation from "./Navigation"; // Assicurati di importare il componente Navigation
+import Navigation from "./Navigation";
 
 
 const url = "https://react--course-api.herokuapp.com/api/v1/data/gelateria";
 
-const Home = () => {
+const Home = ({ aggiungiAlCarrello, contatoreCarrello }) => {
 
   const [isLoading, setIsLoading] = useState(true); // Attivato il loading
 
@@ -82,23 +81,20 @@ const Home = () => {
     setFilterProducts(filteredProducts);
   };
 
-  const [carrello, setCarrello] = useState([]);
+  
 
   const handleAggiungiAlCarrello = (gelato) => {
-    // Verifica se l'elemento è già presente nel carrello
-    if (!carrello.some((item) => item.id === gelato.id)) {
-      console.log(`Aggiungi al carrello: ${gelato.nome}`);
-      setCarrello((prevCarrello) => [...prevCarrello, gelato]);
-    } else {
-      console.log(`${gelato.nome} è già presente nel carrello.`);
-    }
+    console.log(`Aggiungi al carrello: ${gelato.nome}`);
+    aggiungiAlCarrello(gelato);
+    
   };
 
-  console.log("Carrello attuale:", carrello);
+    
 
   return (
     <>
-      <Navigation onSearch={searchProducts} />{" "}
+      <Navigation onSearch={searchProducts} contatoreCarrello={contatoreCarrello} />{" "}
+      
       {/* Passa la funzione di ricerca al componente Navigation */}
       <div className="container">
         <h4 style={{ textAlign: "center", textTransform: "uppercase" }}>
@@ -137,7 +133,7 @@ const Home = () => {
           
         </div>
       ))}
-      <Carrello carrello={carrello} />
+      
     </div>
             </>
           ) : //Se non sto caricando ma sono presenti errori

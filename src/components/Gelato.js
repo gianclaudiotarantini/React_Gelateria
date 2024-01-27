@@ -20,7 +20,7 @@ const Gelato = ({ id, nome, img, prezzo, categoria, addToCart }) => {
         </div>
       </Link>
 
-      <div className="prd-info">
+      <div className="prd-info position-relative">
         <header className="prd-header">
           <div>
             <h5>{nome}</h5>
@@ -30,7 +30,7 @@ const Gelato = ({ id, nome, img, prezzo, categoria, addToCart }) => {
             <h6>{(prezzo / 100).toFixed(2)}€</h6>
           </span>
         </header>
-        <button onClick={handleAggiungiAlCarrello} className="bn60 btn">Aggiungi</button>
+        <button onClick={handleAggiungiAlCarrello} className="bn60 btn position-absolute end-0">Aggiungi</button>
         <hr />
         
       </div>

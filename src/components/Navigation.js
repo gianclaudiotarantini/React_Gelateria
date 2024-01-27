@@ -3,13 +3,12 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Badge from "react-bootstrap/Badge";
 
-function Navigation({ onSearch }) {
+function Navigation({ onSearch, contatoreCarrello  }) {
   // Inserimento del prop che serve a comunicare il cambiamento della query di ricerca
   const [searchQuery, setSearchQuery] = React.useState(""); // Stato per per memorizzare la query di ricerca inserita dall'utente.
 
@@ -24,7 +23,11 @@ function Navigation({ onSearch }) {
     <Navbar bg="primary" variant="dark" expand="lg">
       <Container fluid>
         <Navbar.Brand href="#">
-          <h3> Nice Cream</h3>
+        <Link to={"/"} className="nav-link">
+              <h3>
+                Nice Cream
+              </h3>         
+            </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -47,15 +50,13 @@ function Navigation({ onSearch }) {
               value={searchQuery}
               onChange={handleSearchChange}
             />
-            <Button variant="outline-success" className="btn-warning">
-              Search
-            </Button>
+            
           </Form>
           <Nav>
             <Nav.Link as={Link} to="/carrello">
               <FontAwesomeIcon icon={faShoppingCart} size="lg" />
               <Badge bg="danger" className="ms-1">
-                0
+              {contatoreCarrello}
               </Badge>
             </Nav.Link>
           </Nav>

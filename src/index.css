@@ -214,6 +214,7 @@ p {
 }
 
 .prd-info {
+  position: relative;
   align-self: flex-start;
   display: grid;
   display: -moz-grid;
@@ -311,7 +312,9 @@ p {
   color: #ffffff;
   font-size:small;
   font-weight: 600;
-  position: relative;
+  position: absolute;
+  bottom: 10px; /* Regola il valore in base alle tue esigenze */
+  right: 10px; /* Regola il valore in base alle tue esigenze */
   outline: none;
   border-radius: 50px;
   display: flex;
@@ -342,6 +345,11 @@ p {
 }
 
 .gelato-thumbnail .prd-info {
+  
   margin-top: 10px;
   text-align: center;
+}
+
+.style-h1 {
+  font-style: italic;
 }
